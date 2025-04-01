@@ -20,6 +20,9 @@ The second is the High Resolution Upsampler (HRU). Here we take HT2, representin
 ## Running code 
 We have two folders that store the baselines, baselineMLP which stores a model containing an MLP that produces a high resolution brain matrix, and baseline STP-GSR that produces high resolution brain matrices based on the following paper: https://arxiv.org/html/2411.02525v1. Our implementation is stored in the graph FDE folder. 
 
-To run any of these models, we can run the analysis.ipynb file that trains both the models and evalates / plots their results. However note, since we have not been able to provide the data for training the task, the low resolution training matrices should be stored in lr_train.csv file, the high resolution training matrices should be stored in the hr_train.csv file, and the low resolution test matrices should be stored in the lr_test.csv file in the main directory. 
+To run any of these models, we can run the analysis.ipynb file that trains both the models and evalates / plots their results. However note, since we have not been able to provide the data for training the task, the low resolution training matrices should be stored in lr_train.csv file, the high resolution training matrices should be stored in the hr_train.csv file, and the low resolution test matrices should be stored in the lr_test.csv file in the main directory. These csv files should store a vector of the upper triangular of the symmetric matrix representing either the low resolution or high resolution brain matrix. The dimensions would be:
+- For low resolution graphs: (N * N-1) / 2 = (160 * 159)/2 = 12720
+- For high resolution graphs: (N * N-1) / 2 = (268 * 267)/2 = 35778
+
 ## Report 
 Report: https://www.overleaf.com/read/rrdywvzkbcyt#71b871
