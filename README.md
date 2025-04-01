@@ -13,5 +13,8 @@ The second is the High Resolution Upsampler (HRU). Here we take HT2, representin
 
 
 ![Screenshot](images/arch.png "Model architecture")
+
+## Training pipeline 
+![Screenshot](images/lp.png "Training pipeline")
 ## Report 
 Report: https://www.overleaf.com/read/rrdywvzkbcyt#71b871
