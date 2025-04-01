@@ -10,6 +10,8 @@ transpose to produce a symmetric, high-resolution adjacency matrix. We heavily u
 we take the initial low resolution adjacency matrix, A_lr, and node feature matrix, X_lr, which is a copy of A_lr. Experimentation showed that these features were the most informative, compared to all-ones or other topological measures. We apply a graph transformer and graph norm layer to produce a node feature matrix, H1, that is upscaled to hrn (the HR resolution dimension) dimensional features. This process is repeated to upscale to 2hrn dimensions in H2. This is a lrn × 2hrn matrix that will be used in the loss functions.
 
 The second is the High Resolution Upsampler (HRU). Here we take HT2, representing node features of 2hrn nodes, and a fully connected adjacency matrix (of dimension 2hrn × 2hrn and pass them through another graph transformer and graph norm block. We assume a fully connected graph so that each node’s features can attend to every other node’s features. We first scale to 200 node features and repeat this process to scale to hrn features. These are HT3 and HT4, respectively. In our post-processing, we apply the L2norm to HT4 so that we can use the similarity scores, H4 × HT4 as our high-resolution adjacency matrix. A ReLU is applied to ensure that the output is positive.
+
+
 ![Screenshot](images/arch.png "Model architecture")
 ## Report 
 Report: https://www.overleaf.com/read/rrdywvzkbcyt#71b871
