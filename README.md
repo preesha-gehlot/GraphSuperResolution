@@ -24,5 +24,14 @@ To run any of these models, we can run the analysis.ipynb file that trains both 
 - For low resolution graphs: (N * N-1) / 2 = (160 * 159)/2 = 12720
 - For high resolution graphs: (N * N-1) / 2 = (268 * 267)/2 = 35778
 
+## Results
+Since our model does not convert the embeddings into a dual graph, and then back to a primal graph, it is significantly faster at inference time than STP-GSR baseline, while achieving comparable results. Given the potential academic need for large scale inference, this could dramatically decrease research time.
+
+The model performs best relative to the baseline in terms of betweenness centrality, and the consistency of average clustering.
+Both measure how good the model is at predicting the modularity of the target graph. This performance is potentially explained by the higher resolution embeddings as it provides the model with the capacity to learn more information than just edge weights.
+
+However during training our losses became quite low, while the validation accuracy significantly slowed down in improvement quite early on
+within the training epochs, suggesting overfitting, that couldn’t necessarily be fixed by early stopping, since stopping early would just lead to worse model performance overall. Thus, there was no significant improvement in our MAE for GraphFDE against the STP-GSR and MLP baselines. This suggested our parameter space was too sparse, or we were failing to emphasise the important information in our embeddings. This could be because the topology of the low resolution graph is taken into account in GraphFDE in a very limited manner. Due to the transpose operation after the first block, each node feature dimension of the initial node embedding then corresponds to a new node. However, there is little structure to ground this paradigm shift. We rely on the GraphFDE learning this.
+
 ## Report 
 Report: https://www.overleaf.com/read/rrdywvzkbcyt#71b871
