@@ -15,6 +15,8 @@ The second is the High Resolution Upsampler (HRU). Here we take HT2, representin
 ![Screenshot](images/arch.png "Model architecture")
 
 ## Training pipeline 
+To ensure the features learnt in the LRFU capture essential topological information about the low resolution brain graph, we use a reconstruction loss. The produced H2 is of shape (lrn × 2hrn). We define X′_lr = H2 × H2T and augment the original loss, MSE between the predicted and ground truth high resolution adjacency matrix, with the additional low resolution reconstruction loss MSE (X′_lr , X_lr ).
+This ensures H2 is a good intermediate representation to upsample into the final high resolution graph. This loss is utilised in addition to the loss measured by the difference between the generated high resolution brain graph and the ground truth. 
 ![Screenshot](images/lp.png "Training pipeline")
 
 ## Running code 
